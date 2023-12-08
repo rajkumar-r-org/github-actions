@@ -1,9 +1,12 @@
 name: Chapter-01-Workflow
-on: 
-  push: 
-    branches: main
-    paths: 
-      - 'Chapter-01/**'
+on:
+  workflow_dispatch:  
+# disabled event triggering this workflow
+#  push: 
+#    branches: main
+#    paths: 
+#      - 'Chapter-01/**'
+
 
 jobs:
   run-shell-commands:
