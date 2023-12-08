@@ -22,5 +22,5 @@ jobs:
     steps:
       - name: echo a string
         run: Write-Output "Windows String"
-      - name: Error Step
-        run: doesnotexitsss
+      - name: Final step
+        run: Write-Output "Successfully completed"
