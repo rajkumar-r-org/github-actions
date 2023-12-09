@@ -22,7 +22,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout the code
-              run: actions/checkout@v3
+              uses: actions/checkout@v3
             - name: Show Username
               run: |
                 echo ${{ github.event.inputs.Username}}
