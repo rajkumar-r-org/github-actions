@@ -1,4 +1,4 @@
-**Trigger the workflows based on the branch or Specific path**
+##   Trigger the workflows based on the branch or Specific path
 
 
 Events: Triggering the Workflow based on the branch and specific path in the repository
