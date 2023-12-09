@@ -1,7 +1,8 @@
 name: Events Workflow
 
 on: 
-    push: 
+    workflow_dispatch: 
+    #push: 
 
 jobs:
     first-job:

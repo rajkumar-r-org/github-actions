@@ -1,0 +1,36 @@
+name: Manual Workflow Dispatch
+
+on:
+    workflow_dispatch:
+        inputs:
+            Username:
+                description: Enter YourName
+                type: string
+                required: true
+            Message:
+                description: Enter Your Message Here
+                required: true
+                type: string
+            ListFiles:
+                description: List Directory
+                type: boolean
+                required: true
+                default: false
+    
+jobs:
+    job-result:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the code
+              run: actions/checkout@v3
+            - name: Show Username
+              run: |
+                echo ${{ github.event.inputs.Username}}
+            - name: Show User Message
+              run: |
+                echo ${{ github.event.inputs.Message}}
+                        
+            - name: List Directory
+              if: github.event.inputs.ListFiles == 'true'
+              run: |
+                echo ${{ github.event.inputs.Message}}
