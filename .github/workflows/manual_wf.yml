@@ -33,4 +33,4 @@ jobs:
             - name: List Directory
               if: github.event.inputs.ListFiles == 'true'
               run: |
-                echo ${{ github.event.inputs.Message}}
+                ls -a
