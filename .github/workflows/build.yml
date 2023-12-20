@@ -31,7 +31,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       #Run Tests
       - name: Run Tests
-        run: mvn -B test
+        run: mvn -B -f ./Hands-on-ci-cd-for-springboot-apps-main/pom.xml test 
   #Build's job
   build:
     #Depends on sonar's job
@@ -57,7 +57,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       #Build the application using Maven
       - name: Build with Maven
-        run: mvn -B package -DskipTests --file pom.xml
+        run: mvn -f ./Hands-on-ci-cd-for-springboot-apps-main/pom.xml -B package -DskipTests --file pom.xml
       #Build the application using Maven
       - name: Upload JAR
         #This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
