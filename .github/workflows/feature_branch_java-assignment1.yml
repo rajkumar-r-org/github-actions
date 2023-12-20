@@ -47,7 +47,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'githubactionassignment'
-          slot-name: 'java-assignment1'
+          app-name: 'java-assignment1'
+          slot-name: 'Production'
           package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_906DE7A680914AA6A5050D65895142A6 }}
