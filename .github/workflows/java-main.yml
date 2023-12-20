@@ -1,11 +1,8 @@
 name: Java Workflow
 
 on: 
-    pull_request:
-        branches: [ feature/java, main ]
     workflow_dispatch:
-    push:
-        branches: [ feature_branch ]
+
 
 jobs:
     Build:
