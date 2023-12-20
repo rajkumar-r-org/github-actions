@@ -66,7 +66,7 @@ jobs:
           #Set artifact name
           name: artifact
           #From this path
-          path: target/${{github.workspace}}.jar
+          path: ${{github.workspace}}/target/build.jar
   #Deploy's job
   deploy:
     #Depends on build's job
@@ -80,7 +80,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: artifact
-          path: target/${{github.workspace}}.jar
+          path: ${{github.workspace}}/target/build.jar
       - name: Check the files
         run: |
           ls -a
