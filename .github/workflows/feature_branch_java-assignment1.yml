@@ -65,14 +65,14 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/build.jar'
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'java-assignment-1'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ steps.webapp.outputs.webapp-url }}
       
     steps:
       - name: Download artifact from build job
@@ -81,10 +81,10 @@ jobs:
           name: java-app
       
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+        id: webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'java-assignment1'
           slot-name: 'java-assignment1'
-          package: '${{ github.workspace }}/target/build.jar'
+          package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_906DE7A680914AA6A5050D65895142A6 }}
