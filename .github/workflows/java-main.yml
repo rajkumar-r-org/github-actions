@@ -1,0 +1,31 @@
+name: Java Workflow
+
+on: 
+    pull_request:
+        branches: [ feature/java ]
+    workflow_dispatch:
+
+jobs:
+    Build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout the code
+              uses: actions/Checkout@v2
+            - name: Setup JDK
+              uses: actions/setup-java@v2
+              with:
+                java-version: 11
+                distribution: Maven
+                cache: maven
+            - name: Build with Maven
+              run: mvn -B package --file spring-boot-helloworld-master\pom.xml
+            - name: Build and test project
+              working-directory: ${{ github.workspace}}
+              run: mvn -B verify
+            - name: Upload Maven build artifact
+              uses: actions/upload-artifact@v2
+              with:
+                name: artifact.jar
+                path: ${{ github.workspace}}/target/${{ github.workspace}}.jar
+                  
