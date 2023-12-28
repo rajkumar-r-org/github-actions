@@ -20,8 +20,7 @@ jobs:
 
       - name: Install necessary packages
         run: |
-          sudo apt update
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install selenium pytest
 
       - name: Run the scraping script
