@@ -27,5 +27,5 @@ jobs:
       - name: Run the scraping script
         id: script
         run: |
-          python ./.github/scripts/pytest-firefox.py
+          pytest -v ./.github/scripts/pytest-Edge.py
         continue-on-error: true
