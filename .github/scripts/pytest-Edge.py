@@ -20,5 +20,5 @@ print(browser.title)
 assert "Google" in browser.title
 # closing the browser
 print(browser.page_source)
-browser.implicitly_wait(10)
+browser.implicitly_wait(5)
 browser.quit()
