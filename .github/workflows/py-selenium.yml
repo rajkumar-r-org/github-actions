@@ -1,6 +1,9 @@
 name: Selenium Scraper
 on:
   workflow_dispatch:
+  push:
+    branches: main
+    paths: ./github/scripts/py-selenium.py
     
 
   
@@ -21,7 +24,7 @@ jobs:
       - name: Install necessary packages
         run: |
           pip install --upgrade pip
-          pip install selenium pytest
+          pip install selenium pytest webriver-manager
 
       - name: Run the scraping script
         id: script
