@@ -1,3 +1,4 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import sys
@@ -15,9 +16,9 @@ def test_content():
     driver = webdriver.Chrome(options=options)
     driver.get(url)
 
-    assert driver.title == expected_title
+    assert driver.title == expected_title, f"Expected title '{expected_title}', but got '{driver.title}'"
 
     paragraphs = driver.find_elements_by_tag_name('p')
-    assert any(expected_text in p.text for p in paragraphs)
+    assert any(expected_text in p.text for p in paragraphs), f"Expected text '{expected_text}' not found in any <p> element"
 
     driver.quit()
