@@ -12,7 +12,7 @@ options.add_argument("--headless")  # Ensure GUI is off for GitHub Actions
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
 driver.get(url)
 
 # Check if the expected title is in the page title
