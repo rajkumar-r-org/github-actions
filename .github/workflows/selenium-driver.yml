@@ -30,5 +30,7 @@ jobs:
             wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
             unzip chromedriver_linux64.zip -d /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver
+        # - name: Run tests
+        #   run: python ./.github/scripts/test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App1 - Unavailable" "currently2 stopped"
         - name: Run tests
-          run: python ./.github/scripts/test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App1 - Unavailable" "currently2 stopped"
+          run: pytest ./.github/scripts/test_edge.py --url=https://dotnetappgithubactions.azurewebsites.net/ --title="Web App1 - Unavailable" --text="currently2 stopped"
