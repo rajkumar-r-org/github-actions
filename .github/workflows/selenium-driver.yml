@@ -31,4 +31,4 @@ jobs:
             unzip chromedriver_linux64.zip -d /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver
         - name: Run tests
-          run: python test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App - Unavailable" "currently stopped"
+          run: python ./github/scripts/test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App - Unavailable" "currently stopped"
