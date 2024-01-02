@@ -2,8 +2,8 @@ name: Driver test
 on:
   workflow_dispatch:
     
-  # push:
-  #   branches: main
+  push:
+    branches: main
 
 jobs:
   scrape:
@@ -33,4 +33,4 @@ jobs:
         # - name: Run tests
         #   run: python ./.github/scripts/test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App1 - Unavailable" "currently2 stopped"
         - name: Run tests
-          run: pytest ./.github/scripts/test_edge.py --url=https://dotnetappgithubactions.azurewebsites.net/ --title="Web App1 - Unavailable" --text="currently2 stopped"
+          run: pytest ./.github/scripts/test_edge.py --url="https://dotnetappgithubactions.azurewebsites.net/" --title="Web App1 - Unavailable" --text="currently2 stopped"
