@@ -1,7 +1,9 @@
 name: Driver test
 on:
-  push:
-    branches: main
+  workflow_dispatch:
+    
+  # push:
+  #   branches: main
 
 jobs:
   scrape:
@@ -11,19 +13,22 @@ jobs:
         - name: Repo checkout
           uses: actions/checkout@v4
           
-        - name: Set up Python
-          uses: actions/setup-python@v4
+        - name: Setup Python
+          uses: actions/setup-python@v2
           with:
-            python-version: 3.9
+            python-version: '3.x'
         
-        - name: Install necessary packages
+        - name: Install dependencies
           run: |
-            pip install --upgrade pip
-            pip install selenium pytest webdriver-manager
-  
-        - name: Run the scraping script
-          id: script
+            sudo apt-get install -y xvfb
+            python -m pip install --upgrade pip
+            pip install selenium pytest
+        
+        - name: Install ChromeDriver
           run: |
-            python ./github/scripts/drivertest.py
-          continue-on-error: true
-  
+            CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
+            wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+        - name: Run tests
+          run: python test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App - Unavailable" "currently stopped"
