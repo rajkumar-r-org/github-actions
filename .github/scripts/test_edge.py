@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import sys
 
 url = sys.argv[1]  # Get URL from command line argument
@@ -11,7 +12,7 @@ options.add_argument("--headless")  # Ensure GUI is off for GitHub Actions
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 driver.get(url)
 
 # Check if the expected title is in the page title
