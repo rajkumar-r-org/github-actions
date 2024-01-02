@@ -33,4 +33,4 @@ jobs:
         # - name: Run tests
         #   run: python ./.github/scripts/test_edge.py https://dotnetappgithubactions.azurewebsites.net/ "Web App1 - Unavailable" "currently2 stopped"
         - name: Run tests
-          run: python ./.github/scripts/test_edge.py "https://dotnetappgithubactions.azurewebsites.net/" "Web App1 - Unavailable" "currently2 stopped"
+          run: python ./.github/scripts/test_edge.py "https://dotnetappgithubactions.azurewebsites.net/" "Web App - Unavailable" "currently stopped"
