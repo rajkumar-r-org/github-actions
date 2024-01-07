@@ -1,33 +1,13 @@
-name: Selenium Scraper
+name: Selenium Test
 on:
   workflow_dispatch:
   push:
     branches: main
-    paths: './github/scripts/py-selenium.py'
-    
 
-  
 jobs:
-  scrape:
-    runs-on: windows-latest
-    name: Selenium Scraper
-        
-    steps:
-      - name: Repo checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-
-      - name: Install necessary packages
-        run: |
-          pip install --upgrade pip
-          pip install selenium pytest webdriver-manager
-
-      - name: Run the scraping script
-        id: script
-        run: |
-          pytest -v ./.github/scripts/pytest-Edge.py
-        continue-on-error: true
+  uses: rajkumar-r-org/build-template/.github/workflows/selenium-test.yml
+  name: Selenium Test
+  with:
+    website: "https://dotnetappgithubactions.azurewebsites.net/"
+    title: "Web App"
+    estring: "stopped"
