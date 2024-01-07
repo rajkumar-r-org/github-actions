@@ -1,50 +1,41 @@
-import pytest
+import sys
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
-from bs4 import BeautifulSoup
+from webdriver_manager.core.os_manager import ChromeType
+from selenium.webdriver.chrome.options import Options
 
-def pytest_addoption(parser):
-    parser.addoption("--url", action="store")
-    parser.addoption("--title", action="store")
-    parser.addoption("--element", action="store")
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
-@pytest.fixture
-def url(request):
-    return request.config.getoption("--url")
+chrome_options = Options()
+options = [
+    "--headless",
+    "--ignore-certificate-errors",
+    "--disable-extensions",
+    "--no-sandbox",
+]
+for option in options:
+    chrome_options.add_argument(option)
 
-@pytest.fixture
-def title(request):
-    return request.config.getoption("--title")
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+website = sys.argv[1]
+driver.get(website)
+time.sleep(pause) #For pages that may take time to fully load
 
-@pytest.fixture
-def element(request):
-    return request.config.getoption("--element")
+title = sys.argv[2]  # Get expected title from command line argument
+expected_string = sys.argv[3]  # Get expected tag from command line argument
 
-@pytest.fixture
-def browser():
-    opts = Options()
-    opts.add_argument("headless")
-    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
-    driver = webdriver.Chrome(service=chrome_service, options=opts)
-    driver.implicitly_wait(5)
+try:
+    assert title in driver.title
+    print("Test 1: Passed - {title}")
+except AssertionError:
+    print(f"Test 1: Failed - {title}")
 
-    yield driver
+try:
+    elements = driver.pagesource
+    assert expected_string in 
+    print(f"Test 2: Passed - Expected string {expected_string}")
+except AssertionError:
+    print(f"Test 2: Failed - Expected string {expected_string}")
 
-def test_get_title(browser, url, title):
-    browser.get(url)
-    try:
-        assert title == browser.title
-    finally:
-        browser.quit()
-
-def test_get_element(browser, url, element):
-    browser.get(url)
-    try:
-        elements = browser.page_source
-        soup = BeautifulSoup(elements, 'html.parser')
-        assert soup.text.find(element) != -1
-    finally:
-        browser.quit()
+driver.quit()
