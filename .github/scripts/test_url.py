@@ -29,6 +29,7 @@ try:
     print(f"Test 1: Passed - {title}")
 except AssertionError:
     print(f"Test 1: Failed - {title}")
+    sys.exit(1)
 
 try:
     #elements = driver.pagesource
@@ -36,5 +37,6 @@ try:
     print(f"Test 2: Passed - Expected string {expected_string}")
 except AssertionError:
     print(f"Test 2: Failed - Expected string {expected_string}")
+    sys.exit(1)
 
 driver.quit()
