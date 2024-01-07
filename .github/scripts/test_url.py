@@ -26,13 +26,13 @@ expected_string = sys.argv[3]  # Get expected tag from command line argument
 
 try:
     assert title in driver.title
-    print("Test 1: Passed - {title}")
+    print(f"Test 1: Passed - {title}")
 except AssertionError:
     print(f"Test 1: Failed - {title}")
 
 try:
     #elements = driver.pagesource
-    assert expected_string in driver.pagesource
+    assert expected_string in driver.page_source
     print(f"Test 2: Passed - Expected string {expected_string}")
 except AssertionError:
     print(f"Test 2: Failed - Expected string {expected_string}")
