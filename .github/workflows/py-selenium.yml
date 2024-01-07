@@ -5,7 +5,7 @@ on:
     branches: main
 
 jobs:
-  uses: rajkumar-r-org/build-template/.github/workflows/selenium-test.yml
+  uses: rajkumar-r-org/build-template/.github/workflows/selenium-test.yml@main
   name: Selenium Test
   with:
     website: "https://dotnetappgithubactions.azurewebsites.net/"
