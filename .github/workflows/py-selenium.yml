@@ -7,8 +7,8 @@ on:
     
 env:
   website: "https://dotnetappgithubactions.azurewebsites.net/"
-  title: "Web App"
-  estring: "stopped"
+  title: "Web App1"
+  estring: "stopped1"
 
 jobs:
   Selenium-Test:
