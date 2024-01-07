@@ -32,8 +32,8 @@ except AssertionError:
     print(f"Test 1: Failed - {title}")
 
 try:
-    elements = driver.pagesource
-    assert expected_string in 
+    #elements = driver.pagesource
+    assert expected_string in driver.pagesource
     print(f"Test 2: Passed - Expected string {expected_string}")
 except AssertionError:
     print(f"Test 2: Failed - Expected string {expected_string}")
