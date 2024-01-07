@@ -20,7 +20,6 @@ for option in options:
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 website = sys.argv[1]
 driver.get(website)
-time.sleep(pause) #For pages that may take time to fully load
 
 title = sys.argv[2]  # Get expected title from command line argument
 expected_string = sys.argv[3]  # Get expected tag from command line argument
