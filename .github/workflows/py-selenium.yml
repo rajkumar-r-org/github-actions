@@ -7,7 +7,7 @@ on:
     
 env:
   website: "https://dotnetappgithubactions.azurewebsites.net/"
-  title: "Web App1"
+  title: "Unavailable"
   estring: "stopped1"
 
 jobs:
